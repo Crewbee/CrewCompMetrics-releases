@@ -6,17 +6,17 @@ CrewCompMetrics is a native Qt telemetry widget with configurable local and remo
 
 ## Experimental alpha
 
-The 0.4.0a1 alpha targets Linux x86_64 with Python 3.12+, compatible glibc and a working systemd user manager with cgroup v2 CPU/memory controls. Physical desktop validation covers Ubuntu 26.04.1 / GNOME 50.1. Ubuntu 24.04 and Debian 13 have container installation checks, not full desktop acceptance. True Glass is limited to the validated GNOME 50 / Mutter 18 Wayland configuration. Broader desktop validation is required for v1.0. No Snap or ARM build is provided.
+The 0.4.0a2 alpha targets Linux x86_64 with Python 3.12+, compatible glibc and a working systemd user manager with cgroup v2 CPU/memory controls. Desktop validation covers Ubuntu 26.04 / GNOME 50. Ubuntu 24.04 and Debian 13 have container installation checks, not full desktop acceptance. True Glass is limited to the validated GNOME 50 / Mutter 18 Wayland configuration. Broader desktop validation is required for v1.0. No Snap or ARM build is provided.
 
-## Download and install 0.4.0a1
+## Download and install 0.4.0a2
 
 **Download the app archive, not just its checksum file.**
 
 | File | What it contains |
 | --- | --- |
-| [crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz](https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a1/crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz) | **The app and installer.** Download and extract this to install. |
-| [crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz.sha256](https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a1/crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz.sha256) | A small text file used to verify the app archive. **It contains no app or installer.** |
-| `crewcompmetrics-0.4.0a1-source.tar.gz` and its `.sha256` | Full corresponding source and its checksum, for inspection, rebuilding or redistribution. Not needed for normal installation. |
+| [crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz](https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a2/crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz) | **The app and installer.** Download and extract this to install. |
+| [crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz.sha256](https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a2/crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz.sha256) | A small text file used to verify the app archive. **It contains no app or installer.** |
+| `crewcompmetrics-0.4.0a2-source.tar.gz` and its `.sha256` | Full corresponding source and its checksum, for inspection, rebuilding or redistribution. Not needed for normal installation. |
 
 ### 1. Download both the app archive and its checksum
 
@@ -25,12 +25,12 @@ Open a terminal as your normal user. These commands work from your home director
 ```bash
 mkdir -p ~/Downloads/crewcompmetrics-alpha &&
 cd ~/Downloads/crewcompmetrics-alpha &&
-wget -O crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a1/crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz &&
-wget -O crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz.sha256 https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a1/crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz.sha256 &&
-sha256sum -c crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz.sha256
+wget -O crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a2/crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz &&
+wget -O crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz.sha256 https://github.com/Crewbee/CrewCompMetrics-releases/releases/download/v0.4.0a2/crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz.sha256 &&
+sha256sum -c crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz.sha256
 ```
 
-Continue only if verification prints `crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz: OK`.
+Continue only if verification prints `crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz: OK`.
 If a download or verification fails, stop and resolve it before installing.
 The `-O` options replace same-named downloads in this dedicated folder when retrying.
 
@@ -38,8 +38,8 @@ The `-O` options replace same-named downloads in this dedicated folder when retr
 
 ```bash
 cd ~/Downloads/crewcompmetrics-alpha &&
-tar -xf crewcompmetrics-0.4.0a1-linux-x86_64.tar.gz &&
-cd crewcompmetrics-0.4.0a1-linux-x86_64 &&
+tar -xf crewcompmetrics-0.4.0a2-linux-x86_64.tar.gz &&
+cd crewcompmetrics-0.4.0a2-linux-x86_64 &&
 python3 install.py --install-dependencies &&
 python3 install.py --diagnose
 ```
@@ -66,6 +66,24 @@ There is no `apt-get install crewcompmetrics` package yet. APT installs optional
 dependencies; the widget itself is installed from the downloaded bundle.
 Read `INSTALL.md` and `docs/dependencies.md` inside the extracted folder for prerequisites,
 collector-only installation and optional features.
+
+## Configure your PCs
+
+Fresh installs discover the local hostname and monitor only that PC. The bundled
+`hosts.example.json` contains dummy names. Copy it to your private configuration folder
+and replace its values with your own hostnames and SSH targets as described in
+`docs/pc-configuration.md`. Your SSH configuration resolves your chosen server hostname
+or LAN address; no developer LAN address or remote target is built in.
+
+Existing installations retain their host profile, credentials, themes and saved selections.
+The app never copies your SSH private keys into a release or onto another user's machine.
+
+## Release contents
+
+This release replaces 0.4.0a1. Earlier download assets have been withdrawn. Public
+packages exclude personal host profiles, captured telemetry and internal maintenance
+scripts. Source and wheel contents are checked before publication. The application
+extension identifier and public project author attribution remain part of the software.
 
 ## Source and licensing
 
