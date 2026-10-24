@@ -4,6 +4,27 @@ Download version-matched binaries, full corresponding source, checksums and inst
 
 CrewCompMetrics is a native Qt telemetry widget with configurable local and remote PCs, saved metric selections, themes and automatic/manual sizing. Missing readings stay unavailable.
 
+## A note from Crewbee
+
+Hi, this is Crewbee.
+
+I've created this desktop widget to give me telemetry on all of my devices shared between my connected home network PCs in one polished interface with lots of visual customization. I am a long-time Linux user for work, and I've finally made the jump to Linux for my home system recently.
+
+I was disappointed with the lack of solutions for a telemetry widget for Linux, and I decided to create my own using the available Qt libraries and telemetry data-gathering software, including CoolerControl in headless mode and other basic device metric sources. I also used Codex to drive the implementation.
+
+The objective of this app is to allow users to see telemetry data for their devices across multiple PCs connected over LAN. The aim is to cover CPUs, GPUs, drives, RAM, motherboard sensors, fans, and AIO sensors wherever the hardware and Linux drivers expose those readings. Unsupported readings remain unavailable.
+
+The current release is Alpha and may have compatibility issues with your specific setup. I'm working toward broader compatibility for v1. If you'd like to download the Alpha anyway, Ubuntu 26.04.1 is the primary tested desktop environment, though available readings will depend on your hardware and drivers.
+
+The tested setup uses Python 3.14.4, PySide6 6.12.0, and GNOME Wayland. The package bundles PySide6 6.12.0, and the installer can install supported missing system dependencies when you use `--install-dependencies`. Python 3.12 or newer must already be available to run the installer. It does not install or replace your desktop environment; compositor Glass requires the supported GNOME 50 / Mutter 18 Wayland setup.
+
+Any input that you have would be helpful. I will continue to work on this and get to a v1 release as soon as possible. I will update this release as soon as the compatibility version is available.
+
+Enjoy! :]
+
+Sincerely,  
+Crewbee
+
 ## Experimental alpha
 
 The 0.4.0a2 alpha targets Linux x86_64 with Python 3.12+, compatible glibc and a working systemd user manager with cgroup v2 CPU/memory controls. Desktop validation covers Ubuntu 26.04 / GNOME 50. Ubuntu 24.04 and Debian 13 have container installation checks, not full desktop acceptance. True Glass is limited to the validated GNOME 50 / Mutter 18 Wayland configuration. Broader desktop validation is required for v1.0. No Snap or ARM build is provided.
